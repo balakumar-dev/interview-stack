@@ -1,0 +1,32 @@
+@if (topic(); as current) {
+<nav class="breadcrumbs"><a routerLink="/">Home</a><mat-icon>chevron_right</mat-icon><a
+        [routerLink]="['/category', current.technologyId]">{{ current.technology
+        }}</a><mat-icon>chevron_right</mat-icon><span>{{ current.title }}</span></nav>
+<app-topic-header [topic]="current" [bookmarked]="isBookmarked(current.id)" [completed]="isCompleted(current.id)"
+    (bookmarkToggle)="toggleBookmark(current.id)" (completionToggle)="toggleCompleted(current.id)" />
+@if (current.content; as content) {
+<mat-tab-group class="topic-tabs" animationDuration="0ms" aria-label="Topic sections">
+    <mat-tab label="Overview">
+        <div class="tab-content"><app-topic-overview [content]="content" /><app-key-concepts
+                [concepts]="content.concepts" /></div>
+    </mat-tab>
+    <mat-tab label="Key Concepts"><app-key-concepts [concepts]="content.concepts" [standalone]="true" /></mat-tab>
+    <mat-tab label="Interview Questions"><app-interview-questions [questions]="content.questions" /></mat-tab>
+    <mat-tab label="Code Examples"><app-code-examples [example]="content.codeExample" /></mat-tab>
+    <mat-tab label="Notes & Revision"><app-topic-notes [topicId]="current.id" [revision]="content.revision" /></mat-tab>
+</mat-tab-group>
+} @else {
+<section class="coming-soon topic-coming-soon"><span class="coming-icon"><mat-icon>hourglass_top</mat-icon></span>
+    <p class="eyebrow">CONTENT IN PROGRESS</p>
+    <h2>Content coming soon</h2>
+    <p>Verified interview guidance for {{ current.title }} is being prepared. You can still save notes and track your
+        progress for this topic.</p><button mat-stroked-button
+        (click)="progress.setBookmarked(current.id, true)"><mat-icon>bookmark_add</mat-icon>Save for later</button>
+</section>
+}
+} @else {
+<section class="not-found"><mat-icon>search_off</mat-icon>
+    <h1>Topic not found</h1>
+    <p>This topic may have moved or its address may be incorrect.</p><a routerLink="/">Return to your dashboard</a>
+</section>
+}

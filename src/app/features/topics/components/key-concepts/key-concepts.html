@@ -1,0 +1,13 @@
+@if (standalone()) {
+  <div class="tab-content concept-grid standalone-concepts">
+    @for (concept of concepts(); track concept.title; let index = $index) {
+      <article class="concept-card"><span class="concept-index">{{ index + 1 | number: '2.0' }}</span><h3>{{ concept.title }}</h3><p>{{ concept.explanation }}</p><div class="example-note"><span>REAL-WORLD EXAMPLE</span><p>{{ concept.example }}</p></div><div class="interview-note"><mat-icon>tips_and_updates</mat-icon><span>{{ concept.interviewPoint }}</span></div></article>
+    }
+  </div>
+} @else {
+  <section class="concept-section"><div class="content-section-heading"><div><p class="eyebrow">FOUNDATION</p><h2>Key concepts</h2></div><span>{{ concepts().length }} concepts</span></div><div class="concept-grid">
+    @for (concept of concepts(); track concept.title; let index = $index) {
+      <article class="concept-card"><span class="concept-index">{{ index + 1 | number: '2.0' }}</span><h3>{{ concept.title }}</h3><p>{{ concept.explanation }}</p><div class="example-note"><span>EXAMPLE</span><p>{{ concept.example }}</p></div><div class="interview-note"><mat-icon>tips_and_updates</mat-icon><span>{{ concept.interviewPoint }}</span></div></article>
+    }
+  </div></section>
+}

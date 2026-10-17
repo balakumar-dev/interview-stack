@@ -1,0 +1,8 @@
+<div class="tab-content">
+  <div class="content-section-heading"><div><p class="eyebrow">APPLIED KNOWLEDGE</p><h2>Code example</h2></div></div>
+  @if (example(); as current) {
+    <article class="code-card"><div class="code-toolbar"><span><mat-icon>code</mat-icon>{{ current.language }}</span><button mat-button (click)="copy(current.code)"><mat-icon>content_copy</mat-icon>Copy</button></div><pre><code>{{ current.code }}</code></pre><p class="code-explanation">{{ current.explanation }}</p>@if (current.output) { <div class="expected-output"><strong>Expected behavior</strong><span>{{ current.output }}</span></div> }</article>
+  } @else {
+    <div class="coming-soon"><mat-icon>menu_book</mat-icon><h3>Concept-focused topic</h3><p>This guide emphasizes design decisions and trade-offs. Practical scenarios are covered in the Overview and Key Concepts tabs.</p></div>
+  }
+</div>

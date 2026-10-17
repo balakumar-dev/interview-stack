@@ -1,0 +1,52 @@
+<section class="welcome-row">
+  <div>
+    <p class="eyebrow">YOUR TECHNICAL LEARNING SPACE</p>
+    <h1>Welcome to Interview Preparation</h1>
+    <p class="welcome-copy">Learn, revise, and master your technical interviews.</p>
+  </div>
+  <div class="welcome-mark" aria-hidden="true"><mat-icon>school</mat-icon><span>Build a stronger answer, one topic at a time.</span></div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading"><div><h2>Explore technologies</h2><p>Structured paths for the tools you work with.</p></div><span class="muted-label">{{ totalTopics }} topics</span></div>
+  <div class="technology-grid">
+    @for (category of technologies; track category.id) {
+      <a class="technology-card" [routerLink]="['/category', category.id]" [style.--category-color]="category.color">
+        <div class="technology-top"><span class="technology-icon"><mat-icon>{{ category.icon }}</mat-icon></span><mat-icon class="card-arrow">arrow_outward</mat-icon></div>
+        <h3>{{ category.name }}</h3><p>{{ category.topics.length }} topics to explore</p>
+        <div class="card-progress"><span [style.width.%]="progressFor(category.id)"></span></div>
+        <small>{{ completedFor(category.id) }} completed</small>
+      </a>
+    }
+  </div>
+</section>
+
+<div class="dashboard-columns">
+  <section class="section-block recent-block">
+    <div class="section-heading"><div><h2>Pick up where you left off</h2><p>Your recently viewed topics.</p></div><mat-icon>history</mat-icon></div>
+    @if (recentTopics.length) {
+      <div class="recent-list">
+        @for (topic of recentTopics; track topic.id) {
+          <a class="recent-row" [routerLink]="['/topic', topic.id]"><span class="recent-symbol"><mat-icon>{{ categoryIcon(topic.technologyId) }}</mat-icon></span><span class="recent-name"><strong>{{ topic.title }}</strong><small>{{ topic.technology }}</small></span><mat-icon>arrow_forward</mat-icon></a>
+        }
+      </div>
+    } @else {
+      <div class="empty-recent"><span class="empty-icon"><mat-icon>menu_book</mat-icon></span><p>Your viewed topics will appear here.</p><a routerLink="/topic/rxjs">Start with RxJS <mat-icon>arrow_forward</mat-icon></a></div>
+    }
+  </section>
+  <section class="section-block revision-block">
+    <div class="revision-accent"><mat-icon>lightbulb</mat-icon><span>DAILY REVISION</span></div>
+    <h2>A little review goes a long way.</h2><p>Revisit a core concept and keep it fresh before your next interview.</p>
+    <a class="revision-link" routerLink="/topic/rxjs">Review RxJS fundamentals <mat-icon>arrow_forward</mat-icon></a>
+    <div class="revision-foot"><mat-icon>schedule</mat-icon><span>About 12 minutes</span><span class="revision-dot"></span><span>Intermediate</span></div>
+  </section>
+</div>
+
+<section class="quick-section">
+  <div><p class="eyebrow">QUICK ACCESS</p><h2>High-value interview topics</h2><p>Start with concepts that surface often in technical conversations.</p></div>
+  <div class="quick-links">
+    @for (id of ['rxjs', 'dependency-injection', 'joins', 'azure-functions']; track id) {
+      @if (topics.getTopic(id); as topic) { <a [routerLink]="['/topic', topic.id]"><span>{{ topic.technology }}</span><strong>{{ topic.title }}</strong><mat-icon>north_east</mat-icon></a> }
+    }
+  </div>
+</section>

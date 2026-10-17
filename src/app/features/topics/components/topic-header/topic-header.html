@@ -1,0 +1,10 @@
+<header class="topic-heading" [style.--category-color]="category()?.color ?? '#2563eb'">
+  <span class="topic-heading-icon"><mat-icon>{{ category()?.icon ?? 'article' }}</mat-icon></span>
+  <div class="topic-heading-copy">
+    <p class="eyebrow">{{ topic().technology }} / INTERVIEW GUIDE</p>
+    <h1>{{ topic().title }}</h1>
+    <p>{{ topic().description }}</p>
+    <div class="topic-meta"><span class="difficulty" [class.advanced]="topic().difficulty === 'Advanced'">{{ topic().difficulty }}</span><span><mat-icon>schedule</mat-icon>{{ topic().minutes }} min read</span><span><mat-icon>quiz</mat-icon>{{ topic().content?.questions?.length ?? 0 }} questions</span></div>
+  </div>
+  <div class="topic-actions"><button mat-icon-button [attr.aria-label]="bookmarked() ? 'Remove bookmark' : 'Bookmark topic'" [matTooltip]="bookmarked() ? 'Remove bookmark' : 'Bookmark topic'" (click)="bookmarkToggle.emit()"><mat-icon>{{ bookmarked() ? 'bookmark' : 'bookmark_border' }}</mat-icon></button><button mat-stroked-button (click)="completionToggle.emit()"><mat-icon>{{ completed() ? 'task_alt' : 'radio_button_unchecked' }}</mat-icon>{{ completed() ? 'Completed' : 'Mark complete' }}</button></div>
+</header>

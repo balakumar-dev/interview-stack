@@ -1,0 +1,36 @@
+:host { display: block; height: 100%; min-height: 0; }
+
+.app-frame { display: flex; height: 100dvh; min-height: 0; flex-direction: column; color: var(--app-text); }
+.workspace { display: flex; flex: 1; min-height: 0; overflow: hidden; }
+.main-content { display: flex; min-width: 0; flex: 1; flex-direction: column; overflow: auto; background: var(--app-canvas); }
+.page-container { width: min(1160px,100%); flex: 1; margin: 0 auto; padding: 35px 42px 52px; }
+.app-footer { display: flex; justify-content: space-between; gap: 12px; padding: 13px 42px; border-top: 1px solid var(--app-border); color: var(--app-muted); font-size: 9px; }
+.nav-scrim { display: none; }
+
+@media (max-width: 1100px) {
+  .page-container { padding: 28px 26px 42px; }
+}
+@media (max-width: 760px) {
+  .page-container { padding: 20px 17px 35px; }
+  .app-footer { padding: 12px 17px; }
+}
+@media (max-width: 420px) {
+  .page-container { padding-right: 13px; padding-left: 13px; }
+}
+
+.app-frame { --app-primary: #2563eb; }
+
+.page-container { width: min(1400px, 100%); padding: 32px 36px 48px; }
+.app-footer { padding: 14px 36px; font-size: 11px; }
+
+@media (max-width: 1100px) {
+  .page-container { padding: 28px 24px 40px; }
+}
+@media (max-width: 760px) {
+  .page-container { padding: 22px 18px 34px; }
+  .mobile-nav-open .nav-scrim { position: fixed; inset: 58px 0 0; z-index: 24; display: block; width: 100%; border: 0; background: rgba(12,25,39,.35); }
+}
+@media (max-width: 420px) {
+  .page-container { padding: 18px 14px 28px; }
+  .app-footer { padding: 12px 14px; font-size: 10px; }
+}

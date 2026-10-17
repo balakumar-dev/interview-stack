@@ -1,0 +1,34 @@
+<aside class="sidebar" aria-label="Topic navigation">
+  <div class="sidebar-top"><span class="sidebar-label">LEARNING PATHS</span><button mat-icon-button
+      class="collapse-sidebar" [attr.aria-label]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+      matTooltip="Collapse sidebar" (click)="collapseToggle.emit()"><mat-icon>left_panel_close</mat-icon></button></div>
+  <div class="navigation-scroll">
+    <a class="home-link" routerLink="/" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: true }"
+      (click)="closeDrawer.emit()"><mat-icon>home</mat-icon><span>Home</span></a>
+    <div class="nav-divider"></div>
+    @for (category of technologies; track category.id) {
+    <section class="nav-category" [class.category-expanded]="isExpanded(category.id)">
+      <div class="category-row">
+        <a class="category-main" [routerLink]="['/category', category.id]" [title]="category.name"
+          (click)="closeDrawer.emit()"><span class="category-icon"
+            [style.--category-color]="category.color"><mat-icon>{{ category.icon }}</mat-icon></span><span
+            class="category-name">{{ category.name }}</span></a>
+        <button mat-icon-button class="category-expander"
+          [attr.aria-label]="(isExpanded(category.id) ? 'Collapse ' : 'Expand ') + category.name"
+          [attr.aria-expanded]="isExpanded(category.id)" (click)="categoryToggle.emit(category.id)"><mat-icon>{{
+            isExpanded(category.id) ? 'expand_less' : 'expand_more' }}</mat-icon></button>
+      </div>
+      @if (isExpanded(category.id)) {
+      <div class="topic-nav-list">
+        @for (topic of category.topics; track topic.id) { <a class="topic-nav-link" [routerLink]="['/topic', topic.id]"
+          routerLinkActive="topic-active" (click)="closeDrawer.emit()"><span class="topic-dot"></span><span>{{
+            topic.title }}</span>@if (progress.get(topic.id).completed) { <mat-icon
+            class="completed-mark">check_circle</mat-icon> }</a> }
+      </div>
+      }
+    </section>
+    }
+  </div>
+  <div class="sidebar-bottom"><span class="profile-initial">A</span><span class="sidebar-profile"><strong>My
+        learning</strong><small>Personal workspace</small></span><mat-icon>more_horiz</mat-icon></div>
+</aside>

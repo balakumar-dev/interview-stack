@@ -1,0 +1,28 @@
+:host { display: block; min-width: 0; }
+
+.notes-editor h2 { margin: 0; font-size: 17px; font-weight: 800; }
+.revision-card, .notes-editor { padding: 15px; border: 1px solid var(--app-border); border-radius: 6px; background: var(--app-surface); }
+.notes-layout { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(230px,.7fr); gap: 20px; }
+.notes-editor { display: flex; flex-direction: column; align-items: flex-start; }
+.notes-editor mat-form-field { width: 100%; }
+.notes-editor textarea { min-height: 145px; resize: vertical; font-size: 10px; line-height: 1.7; }
+.notes-actions { display: flex; align-items: center; gap: 13px; }
+.revision-card { align-self: start; }
+.revision-point { display: flex; gap: 7px; padding: 8px 0; border-top: 1px solid var(--app-border); color: var(--app-muted); font-size: 9px; line-height: 1.6; }
+@media (max-width: 760px) {
+  .notes-layout { grid-template-columns: 1fr; }
+}
+.notes-editor h2 { font-size: 23px; font-weight: 650; }
+.revision-card, .notes-editor { padding: 21px; border-color: var(--app-border); border-radius: var(--app-radius-md); box-shadow: var(--app-shadow); }
+.revision-point .mat-icon { color: var(--app-success); }
+.notes-layout { gap: 24px; }
+.notes-editor { padding: 22px; }
+.notes-editor .eyebrow, .revision-card .eyebrow { font-size: 11px; }
+.notes-editor > p:not(.eyebrow) { font-size: 13px; line-height: 1.6; }
+.notes-editor textarea { min-height: 170px; font-size: 14px; line-height: 1.6; }
+.notes-actions button { font-size: 13px; }
+.notes-actions > span { font-size: 11px; }
+.revision-card { padding: 21px; }
+.revision-card h3 { font-size: 17px; }
+.revision-point { gap: 9px; padding: 10px 0; font-size: 13px; line-height: 1.6; }
+:host-context(.dark-theme) .revision-point .mat-icon { color: var(--app-success); }

@@ -1,0 +1,14 @@
+<mat-toolbar class="topbar">
+  <button mat-icon-button class="menu-toggle" aria-label="Toggle navigation" matTooltip="Toggle navigation"
+    (click)="navigationToggle.emit()"><mat-icon>menu</mat-icon></button>
+  <a class="brand" routerLink="/" aria-label="Interview Preparation home"><span
+      class="brand-mark"><mat-icon>school</mat-icon></span><span class="brand-name"><span class="brand-full">Interview
+        <b>Preparation</b></span><span class="brand-compact">PrepForge</span></span></a>
+  <app-global-search />
+  <div class="toolbar-actions"><button mat-icon-button aria-label="Toggle light or dark theme"
+      [matTooltip]="theme.theme() === 'light' ? 'Switch to dark theme' : 'Switch to light theme'"
+      (click)="toggleTheme()"><mat-icon>{{ theme.theme() === 'light' ? 'dark_mode' : 'light_mode'
+        }}</mat-icon></button><button mat-icon-button aria-label="User profile" matTooltip="Your study profile"
+      (click)="notice.emit('Your study progress is saved on this device.')"><mat-icon>account_circle</mat-icon></button>
+  </div>
+</mat-toolbar>

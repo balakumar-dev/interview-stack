@@ -1,0 +1,11 @@
+@if (category(); as current) {
+  <nav class="breadcrumbs"><a routerLink="/">Home</a><mat-icon>chevron_right</mat-icon><span>{{ current.name }}</span></nav>
+  <header class="category-header" [style.--category-color]="current.color"><span class="technology-icon"><mat-icon>{{ current.icon }}</mat-icon></span><div><p class="eyebrow">TECHNOLOGY PATH</p><h1>{{ current.name }}</h1><p>Choose a topic to review its key concepts and interview questions.</p></div></header>
+  <section class="category-topic-grid">
+    @for (topic of current.topics; track topic.id) {
+      <a class="category-topic-card" [routerLink]="['/topic', topic.id]"><span class="topic-card-number">{{ topic.id.slice(0, 2).toUpperCase() }}</span><span class="category-topic-copy"><strong>{{ topic.title }}</strong><small>{{ topic.description }}</small></span><mat-icon>arrow_forward</mat-icon></a>
+    }
+  </section>
+} @else {
+  <section class="not-found"><mat-icon>search_off</mat-icon><h1>Technology not found</h1><p>This learning path may have moved.</p><a routerLink="/">Return to your dashboard</a></section>
+}

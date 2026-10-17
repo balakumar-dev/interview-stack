@@ -1,0 +1,12 @@
+:host { display: block; min-width: 0; }
+
+.code-card { overflow: hidden; border: 1px solid #243c50; border-radius: 6px; color: #e5eef5; background: #172a3a; }
+.code-toolbar { display: flex; min-height: 42px; align-items: center; justify-content: space-between; padding: 0 12px; border-bottom: 1px solid rgba(222,239,250,.12); }
+.code-toolbar button { color: #d2e1ed; }
+.code-card pre { overflow: auto; margin: 0; padding: 17px; color: #d9e9f4; font: 10px/1.8 Consolas,'Cascadia Code',monospace; }
+.code-explanation, .expected-output { padding: 11px 15px; border-top: 1px solid rgba(222,239,250,.12); color: #b7c8d5; font-size: 9px; }
+.code-card { border-radius: var(--app-radius-md); }
+.code-toolbar { min-height: 48px; padding: 0 16px; }
+.code-toolbar > span, .code-toolbar button { font-size: 13px; }
+.code-card pre { padding: 20px; font-size: 14px; line-height: 1.7; }
+.code-explanation, .expected-output { padding: 14px 17px; font-size: 13px; line-height: 1.6; }

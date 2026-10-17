@@ -1,0 +1,13 @@
+<div class="overview-layout">
+    <article class="overview-main">
+        <h2>At a glance</h2>
+        <p class="lead-copy">{{ content().introduction }}</p>
+        <h3>Key points to remember</h3>
+        <ul class="check-list">@for (point of content().revision; track point) { <li><mat-icon>check</mat-icon><span>{{
+                    point }}</span></li> }</ul>
+    </article>
+    <aside class="overview-aside">
+        <div class="aside-heading"><mat-icon>track_changes</mat-icon><strong>Where it is used</strong></div>@for (use of
+        content().useCases; track use) { <div class="use-case"><span></span>{{ use }}</div> }
+    </aside>
+</div>

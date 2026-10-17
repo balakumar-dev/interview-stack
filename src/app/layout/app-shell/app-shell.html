@@ -1,0 +1,8 @@
+<div class="app-frame" [class.sidebar-collapsed]="sidebarCollapsed()" [class.mobile-nav-open]="mobileNavOpen()">
+  <app-header (navigationToggle)="toggleNavigation()" (notice)="showNotice($event)" />
+  <div class="workspace">
+    <button class="nav-scrim" aria-label="Close navigation" (click)="mobileNavOpen.set(false)"></button>
+    <app-sidebar-navigation [technologies]="technologies" [expanded]="expanded()" [collapsed]="sidebarCollapsed()" [mobileOpen]="mobileNavOpen()" (categoryToggle)="toggleCategory($event)" (collapseToggle)="sidebarCollapsed.update((value) => !value)" (closeDrawer)="mobileNavOpen.set(false)" />
+    <main class="main-content"><div class="page-container"><router-outlet /></div><footer class="app-footer"><span>Interview Preparation</span><span>Progress saved locally on this device</span></footer></main>
+  </div>
+</div>

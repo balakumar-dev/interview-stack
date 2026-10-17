@@ -1,0 +1,11 @@
+<div class="global-search" [class.search-active]="focused()">
+  <mat-icon>search</mat-icon>
+  <input [formControl]="search" aria-label="Search topics and questions" placeholder="Search topics, concepts, questions..." role="combobox" aria-autocomplete="list" [attr.aria-expanded]="focused() && search.value.length >= 2" (focus)="focused.set(true)" (blur)="focused.set(false)" (keydown.enter)="openFirstResult()" (keydown.escape)="clear()" />
+  @if (search.value) { <button mat-icon-button aria-label="Clear search" (mousedown)="$event.preventDefault()" (click)="clear()"><mat-icon>close</mat-icon></button> }
+  @if (focused() && search.value.trim().length >= 2) {
+    <div class="search-results" role="listbox">
+      @for (topic of results(); track topic.id) { <button class="search-result" role="option" (mousedown)="$event.preventDefault()" (click)="openTopic(topic.id)"><span class="search-result-icon"><mat-icon>{{ categoryIcon(topic) }}</mat-icon></span><span><strong>{{ topic.title }}</strong><small>{{ topic.technology }}</small></span><mat-icon class="result-arrow">arrow_forward</mat-icon></button> }
+      @if (!results().length) { <div class="search-empty"><mat-icon>search_off</mat-icon><span>No topics found for “{{ search.value }}”</span></div> }
+    </div>
+  }
+</div>
